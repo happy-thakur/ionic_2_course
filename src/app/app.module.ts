@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +14,7 @@ import { DishdetailPage } from '../pages/dishdetail/dishdetail';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { CommentPage } from '../pages/comment/comment';
 import { ReservationPage } from '../pages/reservation/reservation';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,12 +36,14 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     DishdetailPage,
     FavoritesPage,
     CommentPage,
-    ReservationPage
+    ReservationPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +55,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     DishdetailPage,
     FavoritesPage,
     CommentPage,
-    ReservationPage
+    ReservationPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -60,6 +66,7 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
+    LocalNotifications,
     { provide: 'BaseURL', useValue: baseURL },
     FavoriteProvider
   ]
